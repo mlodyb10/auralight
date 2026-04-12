@@ -1,48 +1,10 @@
 'use client'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Zap, Moon, Cpu, Smartphone, Sun, Shield, type LucideIcon } from 'lucide-react'
-import { EASING } from '@/lib/constants'
+import { EASING, FEATURES_DETAIL } from '@/lib/constants'
 
 const ICON_MAP: Record<string, LucideIcon> = { Zap, Moon, Cpu, Smartphone, Sun, Shield }
-
-const FEATURES_DETAIL = [
-  {
-    n: '01', icon: 'Zap', title: 'AI Scenes',
-    lead: 'Oświetlenie które uczy się Twoich nawyków.',
-    body: 'System analizuje Twój rytm dobowy i automatycznie tworzy sceny światła dopasowane do pory dnia, aktywności i nastroju. Poranny blask pobudza. Wieczorna miedź relaksuje. Bez jednego dotknięcia.',
-    detail: ['Uczenie maszynowe z danych użytkownika', 'Automatyczna aktualizacja scen co tydzień', 'Synchronizacja ze wschodem i zachodem słońca'],
-  },
-  {
-    n: '02', icon: 'Moon', title: 'Night Mode',
-    lead: 'Sen bez kompromisów.',
-    body: 'Dwie godziny przed snem Aura zaczyna płynnie przechodzić do ciepłego, bursztynowego spektrum. Melatonina nie jest zakłócana. Budzisz się wypoczęty.',
-    detail: ['Automatyczny sunset timer', 'Temperatura barwowa < 2200K w trybie nocnym', 'Kompatybilność z Apple Health i Google Fit'],
-  },
-  {
-    n: '03', icon: 'Cpu', title: 'CPU Sync',
-    lead: 'Środowisko pracy które reaguje na Ciebie.',
-    body: 'Aura łączy się z systemem operacyjnym i monitoruje obciążenie procesora, aktywne aplikacje i poziom skupienia. Podczas głębokiej pracy — chłodne, ostre światło. Podczas przerwy — ciepłe przyciemnienie.',
-    detail: ['Native integration macOS / Windows', 'Tryby: Focus, Flow, Break, Meeting', 'API dla własnych reguł automatyzacji'],
-  },
-  {
-    n: '04', icon: 'Smartphone', title: 'App Control',
-    lead: 'Pełna kontrola w kieszeni.',
-    body: 'Natywne aplikacje iOS i Android z intuicyjnym interfejsem. Twórz sceny gestami, udostępniaj je rodzinie, kontroluj każdą żarówkę osobno lub wszystkie jednocześnie.',
-    detail: ['iOS 16+ / Android 12+', 'Widżety ekranu głównego', 'Skróty Siri i Google Assistant'],
-  },
-  {
-    n: '05', icon: 'Sun', title: '16M Colors',
-    lead: 'Pełna paleta. Pełna ekspresja.',
-    body: '16 milionów kolorów z precyzją ±1 Kelvin. Biblioteka 200+ gotowych scen oraz nieograniczona personalizacja. Zapisuj ulubione nastroje i przywołuj je jednym tapnięciem.',
-    detail: ['CRI > 95 dla naturalnego koloru', 'Precyzja temperatury ±1K', 'Eksport scen do przyjaciół'],
-  },
-  {
-    n: '06', icon: 'Shield', title: 'Smart Home',
-    lead: 'Działa z tym co już masz.',
-    body: 'Natywna integracja z HomeKit, Google Home i Amazon Alexa. Aura staje się centralnym elementem Twojego inteligentnego domu — wyzwalana przez obecność, rutyny, pogodę czy inne urządzenia.',
-    detail: ['Apple HomeKit / Google Home / Alexa', 'Matter & Thread ready', 'Lokalne przetwarzanie — brak chmury'],
-  },
-]
 
 export default function FeaturesDetail() {
   return (
@@ -102,12 +64,12 @@ export default function FeaturesDetail() {
         <p className="font-[family-name:var(--font-cormorant)] font-light text-[clamp(24px,3vw,40px)] text-[var(--text)] leading-tight">
           Gotowy zobaczyć to<br /><em className="text-[var(--red)]">w akcji?</em>
         </p>
-        <a
+        <Link
           href="/pricing"
           className="text-[10px] uppercase tracking-[0.2em] text-white bg-[var(--red)] px-8 py-3.5 hover:opacity-90 transition-opacity shrink-0"
         >
           Zobacz cennik →
-        </a>
+        </Link>
       </div>
     </section>
   )

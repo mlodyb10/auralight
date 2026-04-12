@@ -103,12 +103,28 @@ export default function Hero() {
           <div className="flex items-center gap-6">
             <a
               href="#simulator"
+              onClick={e => {
+                e.preventDefault()
+                window.__lenis?.scrollTo('#simulator', {
+                  duration: 1.2,
+                  offset: -60,
+                  easing: (t: number) => 1 - Math.pow(1 - t, 4),
+                })
+              }}
               className="text-[10px] uppercase tracking-[0.2em] text-[var(--cream)] opacity-40 border-b border-current pb-px hover:opacity-70 transition-opacity"
             >
               ↓ Zobacz jak działa
             </a>
             <a
               href="#cta"
+              onClick={e => {
+                e.preventDefault()
+                window.__lenis?.scrollTo('#cta', {
+                  duration: 1.2,
+                  offset: -60,
+                  easing: (t: number) => 1 - Math.pow(1 - t, 4),
+                })
+              }}
               className="text-[10px] uppercase tracking-[0.2em] text-white bg-[var(--red)] px-6 py-3 hover:opacity-90 transition-opacity"
             >
               Get Aura
@@ -116,6 +132,23 @@ export default function Hero() {
           </div>
         </motion.div>
       </div>
+
+      {/* Scroll indicator — right edge, clear of bottom buttons */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="absolute right-8 md:right-14 bottom-1/3 flex flex-col items-center gap-2"
+      >
+        <div className="relative w-px h-12 bg-[var(--cream)] bg-opacity-10 overflow-hidden">
+          <motion.div
+            className="absolute top-0 left-0 w-full bg-[var(--cream)] opacity-40"
+            animate={{ height: ['0%', '100%'], top: ['0%', '100%'] }}
+            transition={{ duration: 1.2, ease: 'linear', repeat: Infinity, repeatDelay: 0.4 }}
+          />
+        </div>
+        <span className="text-[7px] uppercase tracking-[0.4em] text-[var(--cream)] opacity-20 [writing-mode:vertical-rl]">Scroll</span>
+      </motion.div>
 
       {/* Bottom editorial line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-[var(--red)] opacity-20" />

@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Player } from '@remotion/player'
-import { AuraShowcase } from '@/remotion/AuraShowcase'
+import KelvinDisplay from '@/components/KelvinDisplay'
 import { EASING } from '@/lib/constants'
 
 export default function CtaSection() {
@@ -21,19 +20,8 @@ export default function CtaSection() {
           <div className="absolute inset-0 pointer-events-none"
             style={{ background: 'radial-gradient(ellipse at 50% 40%, rgba(255,26,0,0.06) 0%, transparent 70%)' }}
           />
-          <div className="w-full max-w-[480px] overflow-hidden relative z-10">
-            <Player
-              component={AuraShowcase}
-              durationInFrames={180}
-              fps={30}
-              compositionWidth={800}
-              compositionHeight={500}
-              style={{ width: '100%', aspectRatio: '8/5' }}
-              autoPlay
-              loop
-              controls={false}
-              acknowledgeRemotionLicense
-            />
+          <div className="w-full max-w-[480px] relative z-10">
+            <KelvinDisplay />
           </div>
         </motion.div>
 
@@ -60,7 +48,7 @@ export default function CtaSection() {
           </div>
           <div className="mt-10">
             <a
-              href="#"
+              href="/pricing"
               className="inline-block text-[10px] uppercase tracking-[0.2em] text-white bg-[var(--red)] px-8 py-3.5 hover:opacity-90 transition-opacity"
               style={{ boxShadow: '0 0 36px rgba(255,26,0,0.3)' }}
             >

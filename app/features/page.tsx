@@ -1,17 +1,15 @@
-import Navigation from '@/components/Navigation'
 import PageHero from '@/components/PageHero'
 import FeaturesDetail from '@/components/FeaturesDetail'
 import Footer from '@/components/Footer'
 
 export const metadata = {
-  title: 'Features — Aura',
+  title: 'Funkcje — Aura',
   description: 'Wszystko czym powinno być inteligentne oświetlenie.',
 }
 
 export default function FeaturesPage() {
   return (
     <>
-      <Navigation />
       <main>
         <PageHero
           number="01"

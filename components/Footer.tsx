@@ -5,11 +5,14 @@ export default function Footer() {
         AURA
       </span>
       <nav className="ml-auto flex gap-6">
-        {['Privacy', 'Terms', 'Contact', '© 2025'].map(l => (
+        {['Privacy', 'Terms', 'Contact'].map(l => (
           <span key={l} className="text-[9px] uppercase tracking-[0.2em] text-[var(--cream)] opacity-20">
             {l}
           </span>
         ))}
+        <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--cream)] opacity-20">
+          © {new Date().getFullYear()}
+        </span>
       </nav>
     </footer>
   )

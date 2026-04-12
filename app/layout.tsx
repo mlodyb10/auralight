@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '@/components/LenisProvider'
+import Navigation from '@/components/Navigation'
+import PageTransition from '@/components/PageTransition'
+import HashScroller from '@/components/HashScroller'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -17,15 +20,19 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Aura — Light that understands you',
-  description: 'Inteligentne oświetlenie sterowane AI',
+  title: 'Aura — Światło które Cię rozumie',
+  description: 'Inteligentne oświetlenie sterowane AI. Żadnych przełączników. Tylko intuicja.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${cormorant.variable} ${spaceGrotesk.variable}`}>
       <body className="font-[family-name:var(--font-space)]">
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          <Navigation />
+          <HashScroller />
+          <PageTransition>{children}</PageTransition>
+        </LenisProvider>
       </body>
     </html>
   )

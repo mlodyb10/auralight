@@ -1,4 +1,3 @@
-'use client'
 import { useScroll, useTransform, MotionValue } from 'framer-motion'
 
 export function useScrollGlow(): {

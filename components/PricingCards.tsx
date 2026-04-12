@@ -11,7 +11,7 @@ const PLANS = [
     period: 'na zawsze',
     description: 'Idealne na start. Odkryj co potrafi inteligentne oświetlenie.',
     cta: 'Zacznij za darmo',
-    ctaHref: '#',
+    ctaHref: '/pricing',
     highlight: false,
     features: [
       '2 pomieszczenia',
@@ -28,7 +28,7 @@ const PLANS = [
     period: 'miesięcznie',
     description: 'Dla tych którzy traktują przestrzeń poważnie.',
     cta: 'Zacznij 30-dniowy trial',
-    ctaHref: '#',
+    ctaHref: '/pricing',
     highlight: true,
     features: [
       'Nieograniczone pomieszczenia',

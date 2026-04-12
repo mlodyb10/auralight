@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    minimumCacheTTL: 0,
+    qualities: [90, 95, 100],
+  },
 };
 
 export default nextConfig;
