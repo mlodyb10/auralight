@@ -32,6 +32,7 @@ export default function CtaSection() {
               autoPlay
               loop
               controls={false}
+              acknowledgeRemotionLicense
             />
           </div>
         </motion.div>
