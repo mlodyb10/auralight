@@ -1,6 +1,12 @@
 'use client'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
+const NAV_LINKS = [
+  { label: 'Features',  href: '/features' },
+  { label: 'Simulator', href: '/#simulator' },
+  { label: 'Pricing',   href: '/pricing' },
+]
+
 export default function Navigation() {
   const { scrollY } = useScroll()
   const borderOpacity = useTransform(scrollY, [0, 80], [0, 1])
@@ -15,22 +21,22 @@ export default function Navigation() {
         style={{ background: 'var(--border-neon)', opacity: borderOpacity }}
       />
 
-      <span className="font-[family-name:var(--font-cormorant)] text-xl font-light tracking-[0.4em] text-[var(--text)]">
+      <a href="/" className="font-[family-name:var(--font-cormorant)] text-xl font-light tracking-[0.4em] text-[var(--text)] hover:opacity-70 transition-opacity">
         AURA
-      </span>
+      </a>
 
       <div className="ml-auto flex items-center gap-7">
-        {['Features', 'Simulator', 'Pricing'].map(link => (
+        {NAV_LINKS.map(({ label, href }) => (
           <a
-            key={link}
-            href={`#${link.toLowerCase()}`}
+            key={label}
+            href={href}
             className="hidden sm:block text-[10px] uppercase tracking-[0.2em] text-[var(--text)] opacity-50 hover:opacity-100 transition-opacity"
           >
-            {link}
+            {label}
           </a>
         ))}
         <a
-          href="#cta"
+          href="/pricing"
           className="text-[10px] uppercase tracking-[0.2em] text-[var(--red)] border-b border-[var(--red)] pb-px"
         >
           Get Aura
