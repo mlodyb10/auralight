@@ -42,7 +42,7 @@ export default async function PromoPage() {
             02 — Dom
           </span>
           <h2 className="font-[family-name:var(--font-cormorant)] font-light text-[clamp(32px,4vw,52px)] leading-[0.95] tracking-tight text-[var(--text)] mb-6">
-            Twój dom.<br /><em className="text-[var(--red)]">Twój nastrój.</em>
+            Twój dom.<br /><em className="text-[var(--warm)]">Twój nastrój.</em>
           </h2>
           <p className="text-[11px] text-[var(--text)] opacity-50 leading-[1.8] mb-8 max-w-[320px]">
             Poranna energia, wieczorny relaks, romantyczna kolacja — Aura zmienia atmosferę jednym dotknięciem.
@@ -65,7 +65,7 @@ export default async function PromoPage() {
             03 — Praca
           </span>
           <h2 className="font-[family-name:var(--font-cormorant)] font-light text-[clamp(32px,4vw,52px)] leading-[0.95] tracking-tight text-[var(--text)] mb-6">
-            Produktywność<br /><em className="text-[var(--red)]">zaczyna się od światła.</em>
+            Produktywność<br /><em className="text-[var(--cool)]">zaczyna się od światła.</em>
           </h2>
           <p className="text-[11px] text-[var(--text)] opacity-50 leading-[1.8] mb-8 max-w-[320px]">
             CPU Sync monitoruje Twoje skupienie i automatycznie przełącza na chłodne, ostre światło podczas
@@ -81,8 +81,8 @@ export default async function PromoPage() {
         {/* Image — right on desktop */}
         <div className="relative min-h-[400px] overflow-hidden order-1 md:order-2">
           <Image
-            src="/room/salon/room-cool.jpg"
-            alt="Przestrzeń do pracy w chłodnym oświetleniu"
+            src="/room/sypialnia/room-cool.jpg"
+            alt="Sypialnia w chłodnym oświetleniu do pracy"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
