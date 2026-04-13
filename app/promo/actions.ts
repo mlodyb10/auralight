@@ -3,12 +3,12 @@
 import { kv } from '@vercel/kv'
 
 function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 export async function getEmailCount(): Promise<number> {
-  const keys = await kv.keys('email:*')
-  return keys.length
+  const count = await kv.get<number>('email:count')
+  return count ?? 0
 }
 
 export async function submitEmail(
@@ -19,18 +19,22 @@ export async function submitEmail(
     return { success: false, count: 0, error: 'Nieprawidłowy adres email.' }
   }
 
-  const count = await getEmailCount()
-  if (count >= 100) {
-    return { success: false, count, error: 'Lista jest już zamknięta.' }
+  let newCount: number
+  try {
+    newCount = await kv.incr('email:count')
+    if (newCount > 100) {
+      await kv.decr('email:count')
+      return { success: false, count: 100, error: 'Lista jest już zamknięta.' }
+    }
+    await kv.set(`email:${crypto.randomUUID()}`, {
+      email: trimmed,
+      source: 'promo-hero',
+      createdAt: new Date().toISOString(),
+    })
+  } catch {
+    return { success: false, count: 0, error: 'Błąd serwera. Spróbuj ponownie.' }
   }
 
-  await kv.set(`email:${Date.now()}`, {
-    email: trimmed,
-    source: 'promo-hero',
-    createdAt: new Date().toISOString(),
-  })
-
-  const newCount = await getEmailCount()
   return { success: true, count: newCount }
 }
 
@@ -41,18 +45,22 @@ export async function submitDemo(
   const trimmedName = name.trim()
   const trimmedEmail = email.trim()
 
-  if (!trimmedName || trimmedName.length < 2) {
-    return { success: false, error: 'Imię musi mieć co najmniej 2 znaki.' }
+  if (!trimmedName || trimmedName.length < 2 || trimmedName.length > 100) {
+    return { success: false, error: 'Imię musi mieć od 2 do 100 znaków.' }
   }
   if (!isValidEmail(trimmedEmail)) {
     return { success: false, error: 'Nieprawidłowy adres email.' }
   }
 
-  await kv.set(`demo:${Date.now()}`, {
-    name: trimmedName,
-    email: trimmedEmail,
-    createdAt: new Date().toISOString(),
-  })
+  try {
+    await kv.set(`demo:${crypto.randomUUID()}`, {
+      name: trimmedName,
+      email: trimmedEmail,
+      createdAt: new Date().toISOString(),
+    })
+  } catch {
+    return { success: false, error: 'Błąd serwera. Spróbuj ponownie.' }
+  }
 
   return { success: true }
 }
