@@ -81,8 +81,8 @@ export default async function PromoPage() {
         {/* Image — right on desktop */}
         <div className="relative min-h-[400px] overflow-hidden order-1 md:order-2">
           <Image
-            src="/room/sypialnia/room-cool.jpg"
-            alt="Sypialnia w chłodnym oświetleniu do pracy"
+            src="/room/kuchnia/room-cool.jpg"
+            alt="Kuchnia w chłodnym oświetleniu do pracy"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={90}
