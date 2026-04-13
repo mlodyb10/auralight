@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion'
 import { EASING } from '@/lib/constants'
 import { submitEmail } from '@/app/promo/actions'
@@ -19,7 +19,6 @@ export default function PromoHero({ initialCount }: PromoHeroProps) {
 
   // Animated counter — counts from 100 down to initialCount on mount
   const counterMv = useMotionValue(100)
-  const counterRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     if (isClosed) return
@@ -67,6 +66,7 @@ export default function PromoHero({ initialCount }: PromoHeroProps) {
           className="flex items-center gap-3 mb-8 text-[9px] uppercase tracking-[0.4em] text-[var(--cream)] opacity-40"
         >
           <span className="text-[var(--red)]">01</span>
+          <span className="opacity-40">—</span>
           <span>Oferta limitowana</span>
         </motion.div>
 
@@ -101,7 +101,6 @@ export default function PromoHero({ initialCount }: PromoHeroProps) {
           aria-atomic="true"
         >
           <span
-            ref={counterRef}
             className="font-[family-name:var(--font-cormorant)] font-light text-[clamp(36px,5vw,64px)] text-[var(--red)] leading-none tabular-nums"
           >
             {isClosed ? '100' : displayCount}
