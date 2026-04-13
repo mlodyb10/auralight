@@ -13,7 +13,7 @@ const ROOMS = [
   { id: 'lazienka',  label: 'Łazienka', n: '04', ready: true  },
 ]
 
-function RoomImages({ roomId }: { roomId: string }) {
+export function RoomImages({ roomId }: { roomId: string }) {
   const {
     warmth, sliderVal, hasInteracted, kelvinDisplay,
     neutralOpacity, warmOpacity, thumbColor, thumbShadow, kelvinColor,
