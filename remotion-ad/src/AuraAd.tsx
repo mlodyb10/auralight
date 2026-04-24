@@ -108,7 +108,6 @@ function SceneIntro({ frame }: { frame: number }) {
 }
 
 function SceneAI({ frame }: { frame: number }) {
-  const warmOp    = fade(frame, 100, 140, 160, 200)
   const neutralOp = fade(frame, 160, 200, 220, 260)
   const coolOp    = fade(frame, 220, 260)
 
