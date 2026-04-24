@@ -1,0 +1,18 @@
+{
+  "name": "aura-remotion-ad",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "studio": "remotion studio src/Root.tsx",
+    "render": "remotion render src/Root.tsx AuraAd --output out/aura-reel.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.448",
+    "@remotion/cli": "^4.0.448",
+    "@remotion/google-fonts": "^4.0.448",
+    "@remotion/renderer": "^4.0.448",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "remotion": "^4.0.448"
+  }
+}
