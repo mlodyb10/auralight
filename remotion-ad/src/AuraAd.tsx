@@ -55,7 +55,56 @@ function slideUp(frame: number, start: number, duration = 30) {
 
 // ── Scene placeholders ────────────────────────────────────────────────────
 function SceneIntro({ frame }: { frame: number }) {
-  return <AbsoluteFill style={{ backgroundColor: C.deep }} />
+  const glowOpacity = fade(frame, 0, 60)
+  const logoOpacity = fade(frame, 15, 45)
+  const tagOpacity  = fade(frame, 45, 80)
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: C.deep, justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ position: 'absolute', inset: 0, backgroundImage: GRAIN, opacity: 0.08, mixBlendMode: 'overlay' }} />
+
+      {/* Red glow */}
+      <div style={{
+        position: 'absolute',
+        width: 700, height: 700, borderRadius: '50%',
+        background: `radial-gradient(circle, ${C.red}18 0%, transparent 70%)`,
+        top: '50%', left: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: glowOpacity,
+      }} />
+
+      {/* AURA logo — clipPath reveal */}
+      <div style={{
+        opacity: logoOpacity,
+        clipPath: `inset(0 ${interpolate(frame, [15, 45], [100, 0], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: outStrong })}% 0 0)`,
+        fontFamily: 'Space Grotesk, sans-serif',
+        fontSize: 140, fontWeight: 900,
+        letterSpacing: '0.3em',
+        color: C.cream,
+        textTransform: 'uppercase' as const,
+        lineHeight: 1,
+        textAlign: 'center' as const,
+      }}>
+        AURA
+      </div>
+
+      {/* Tagline */}
+      <div style={{
+        position: 'absolute',
+        bottom: '38%',
+        ...slideUp(frame, 45, 25),
+        fontFamily: 'Cormorant Garamond, serif',
+        fontStyle: 'italic',
+        fontSize: 36,
+        color: C.cream,
+        opacity: tagOpacity * 0.6,
+        letterSpacing: '0.08em',
+        textAlign: 'center' as const,
+      }}>
+        Światło które Cię rozumie.
+      </div>
+    </AbsoluteFill>
+  )
 }
 
 function SceneAI({ frame }: { frame: number }) {
